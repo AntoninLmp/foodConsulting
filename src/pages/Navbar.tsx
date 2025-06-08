@@ -4,7 +4,7 @@ function Navbar() {
       <a href="/">
         <img src="/logo-removebg-resize.png" alt="Logo" className="navbar__logo-img w-[150px]" />
       </a>
-      <ul className="navbar__links flex space-x-4 text-xl gap-4 text-gray-800">
+      <ul className="navbar__links flex space-x-4 text-xl gap-8 text-gray-800 fixed" >
         <li>
           <a href="/">Acceuil</a>
         </li>
