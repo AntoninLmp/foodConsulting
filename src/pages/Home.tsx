@@ -1,7 +1,8 @@
-import Navbar from "./Navbar";
+
 import Footer from "./Footer";
-import ServiceCard from "./ServiceCard";
+import Navbar from "./Navbar";
 import { Code, Brush } from "lucide-react";
+import ServiceCard from "./ServiceCard";
 
 function Home() {
   return (
@@ -41,7 +42,16 @@ function Home() {
         />
       </section>
       <section>
-        
+        <ServiceCard
+          icon={Code}
+          title="Développement Web"
+          description="Sites modernes, rapides et adaptés à tous les écrans."
+        />
+        <ServiceCard
+          icon={Brush}
+          title="Design UX/UI"
+          description="Interfaces intuitives pour une meilleure expérience utilisateur."
+        />
       </section>
       <Footer />
     </>
