@@ -1,22 +1,50 @@
 
 import Footer from "./Footer";
 import Navbar from "./Navbar";
-import { Code, Brush } from "lucide-react";
+import { ClockArrowUp, Speech, Bubbles, ChartArea, Handshake, CalendarSync } from "lucide-react";
 import ServiceCard from "./ServiceCard";
 
 function Home() {
   return (
     <>
       <Navbar />
-      <section className="text-gray-800 flex flex-col items-center justify-center h-[800px]">
-        <h1 className="text-5xl font-bold mb-4">Bienvenue sur mon site vitrine</h1>
-        <p className="text-xl text-center">Ici, je présente mes projets, mes services et comment me contacter.</p>
+      {/* Section d'introduction */}
+      <section className="text-gray-800 h-[700px] flex items-center justify-around mx-[15%]">
+        <div className="text-left">
+          <h1 className="text-5xl font-bold mb-4">
+            {/* "Une vision sans exécution n’est qu’une hallucination." — Thomas Edison */}
+            David Lampin.
+          </h1>
+          <h2 className="text-xl font-light mb-8">Consultant en restauration et gestion d'entreprise</h2>
+          <button>
+            <a
+              href="https://calendly.com/david-lampin/30min"
+              className="bg-[#286c91] text-white px-6 py-3 rounded-full hover:bg-[#1f4f66] transition-colors"
+            >
+              Prendre rendez-vous
+            </a>
+          </button>
+          <button>
+            <a
+              href="https://www.linkedin.com/in/david-lampin/"
+              className="ml-4 bg-gray-200 text-gray-800 px-6 py-3 rounded-full hover:bg-gray-300 transition-colors"
+            >
+              Me contacter
+            </a>
+          </button>
+        </div>
+        <img src="/Photo_profil.png" alt="photo de profil" className=""/>
       </section>
-      <section className="text-gray-800 mx-[20%] my-10 grid grid-cols-3 gap-4">
-        <div className="col-span-2">
-          <h2 className="text-3xl font-semibold mb-4">A propos de FoodConsulting</h2>
-          <h3 className="text-3xl">35 ans d'expertise au service de votre réussite.</h3>
-          <p className="text-xl mb-4 text-justify px-5 font-light">
+
+      {/* Section de présentation */}
+      <section className="text-white px-[15%] py-10 my-10 grid grid-cols-4 gap-4 bg-[#286C91]">
+        <div className="col-span-2 flex flex-col justify-center">
+          <h2 className="text-3xl font-semibold mb-4">
+            A propos de <span className="italic text-4xl ">FoodConsulting</span>{" "}
+          </h2>
+          <h3 className="text-2xl">35 ans d'expertise au service de votre réussite.</h3>
+          <p className="text-l mb-4 text-justify px-5 font-light">
+            <br />
             <br />
             Après plus de trois décennies passées au cœur de l’univers de la restauration, j’ai décidé de mettre mon
             savoir-faire, mon expérience terrain et ma vision stratégique au service des professionnels du secteur.
@@ -35,23 +63,56 @@ function Home() {
             transformer vos idées en résultats concrets et durables
           </p>
         </div>
-        <img
-          src="https://i.pinimg.com/736x/63/c1/f3/63c1f38307b961d147e211e7ebacfdd0.jpg"
-          alt=""
-          className="rounded-4xl"
-        />
+        <div className="col-span-2 flex items-center">
+          <img
+            src="https://i.pinimg.com/736x/63/c1/f3/63c1f38307b961d147e211e7ebacfdd0.jpg"
+            alt=""
+            className="rounded-4xl h-[70%] "
+          />
+        </div>
       </section>
+
+      {/* Section Services */}
       <section>
-        <ServiceCard
-          icon={Code}
-          title="Développement Web"
-          description="Sites modernes, rapides et adaptés à tous les écrans."
-        />
-        <ServiceCard
-          icon={Brush}
-          title="Design UX/UI"
-          description="Interfaces intuitives pour une meilleure expérience utilisateur."
-        />
+        <h2 className="text-3xl text-gray-800 font-semibold text-center mb-8 ">Mes domaines d'expertises</h2>
+        <div className="grid grid-cols-3 gap-4 px-[15%] mb-20">
+          <ServiceCard
+            icon={ClockArrowUp}
+            title="Gestion"
+            description="Sites modernes, rapides et adaptés à tous les écrans."
+            onClick={() => {}}
+          />
+          <ServiceCard
+            icon={Speech}
+            title="Ressources Humaines"
+            description="Interfaces intuitives pour une meilleure expérience utilisateur."
+            onClick={() => {}}
+          />
+          <ServiceCard
+            icon={Bubbles}
+            title="Hygiène et Sécurité"
+            description="Interfaces intuitives pour une meilleure expérience utilisateur."
+            onClick={() => {}}
+          />{" "}
+          <ServiceCard
+            icon={ChartArea}
+            title="Controle de Gestion"
+            description="Interfaces intuitives pour une meilleure expérience utilisateur."
+            onClick={() => {}}
+          />{" "}
+          <ServiceCard
+            icon={CalendarSync}
+            title="Transformation des offres ou des locaux"
+            description="Interfaces intuitives pour une meilleure expérience utilisateur."
+            onClick={() => {}}
+          />
+          <ServiceCard
+            icon={Handshake}
+            title="Appel d'Offres"
+            description="Interfaces intuitives pour une meilleure expérience utilisateur."
+            onClick={() => {}}
+          />
+        </div>
       </section>
       <Footer />
     </>

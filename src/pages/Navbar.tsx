@@ -15,7 +15,7 @@ function Navbar() {
   return (
     <nav className="navbar flex justify-around items-center p-4">
       <a href="/">
-        <img src="/logo-removebg-resize.png" alt="Logo" className="w-[150px]" />
+        <img src="/logo_expertise.png" alt="Logo" className="w-[150px]" />
       </a>
       <div className="flex justify-center">
         <ul
@@ -24,7 +24,7 @@ function Navbar() {
           }`}
         >
           <li>
-            <a href="/">Acceuil</a>
+            <a href="/">Accueil</a>
           </li>
           <li>
             <a href="/">Services</a>
