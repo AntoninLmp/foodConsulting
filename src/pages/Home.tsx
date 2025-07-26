@@ -9,7 +9,7 @@ function Home() {
     <>
       <Navbar />
       {/* Section d'introduction */}
-      <section className="text-gray-800 h-[700px] flex items-center justify-around mx-[15%]">
+      <section className="text-gray-800 h-[70vh] flex items-center justify-around mx-[15%]">
         <div className="text-left">
           <h1 className="text-5xl font-bold mb-4">
             {/* "Une vision sans exécution n’est qu’une hallucination." — Thomas Edison */}
@@ -19,7 +19,7 @@ function Home() {
           <button>
             <a
               href="https://calendly.com/david-lampin/30min"
-              className="bg-[#286c91] text-white px-6 py-3 rounded-full hover:bg-[#1f4f66] transition-colors"
+              className="bg-[#286c91] text-white px-6 py-3 rounded-full hover:bg-[#1f4f66] transition-colors text-xl"
             >
               Prendre rendez-vous
             </a>
@@ -27,13 +27,13 @@ function Home() {
           <button>
             <a
               href="https://www.linkedin.com/in/david-lampin/"
-              className="ml-4 bg-gray-200 text-gray-800 px-6 py-3 rounded-full hover:bg-gray-300 transition-colors"
+              className="ml-4 bg-gray-200 text-gray-800 px-6 py-3 rounded-full hover:bg-gray-300 transition-colors text-xl"
             >
               Me contacter
             </a>
           </button>
         </div>
-        <img src="/Photo_profil.png" alt="photo de profil" className=""/>
+        <img src="/Photo_profil.png" alt="photo de profil" className="w-1/2 max-w-[700px]"/>
       </section>
 
       {/* Section de présentation */}
@@ -73,7 +73,7 @@ function Home() {
       </section>
 
       {/* Section Services */}
-      <section>
+      <section id="services">
         <h2 className="text-3xl text-gray-800 font-semibold text-center mb-8 ">Mes domaines d'expertises</h2>
         <div className="grid grid-cols-3 gap-4 px-[15%] mb-20">
           <ServiceCard

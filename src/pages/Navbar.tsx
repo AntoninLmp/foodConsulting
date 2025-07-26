@@ -15,7 +15,7 @@ function Navbar() {
   return (
     <nav className="navbar flex justify-around items-center p-4">
       <a href="/">
-        <img src="/logo_expertise.png" alt="Logo" className="w-[150px]" />
+        <img src="/logo_expertise.png" alt="Logo" className="w-[200px]" />
       </a>
       <div className="flex justify-center">
         <ul
@@ -24,22 +24,22 @@ function Navbar() {
           }`}
         >
           <li>
-            <a href="/">Accueil</a>
+            <a href="/" className="text-xl">Accueil</a>
           </li>
           <li>
-            <a href="/">Services</a>
+            <a href="/#services" className="text-xl">Services</a>
           </li>
           <li>
-            <a href="/contact">Contact</a>
+            <a href="/" className="text-xl">Contact</a>
           </li>
           <li>
-            <a href="/about">A propos</a>
+            <a href="/about" className="text-xl">A propos</a>
           </li>
         </ul>
       </div>
       <button className="bg-blue-500 text-white">
         <a href="/login" className="btn">
-          Faire un devis
+          Obtenir un devis
         </a>
       </button>
     </nav>
