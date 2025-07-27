@@ -2,7 +2,7 @@
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import { ClockArrowUp, Speech, Bubbles, ChartArea, Handshake, CalendarSync } from "lucide-react";
-import ServiceCard from "./ServiceCard";
+import ServiceCard from "./components/ServiceCard";
 
 function Home() {
   return (
@@ -33,7 +33,7 @@ function Home() {
             </a>
           </button>
         </div>
-        <img src="/Photo_profil.png" alt="photo de profil" className="w-1/2 max-w-[700px]"/>
+        <img src="/Photo_profil.png" alt="photo de profil" className="w-1/2 max-w-[600px]"/>
       </section>
 
       {/* Section de présentation */}

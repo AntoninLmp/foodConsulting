@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 
-function Navbar() {
+type NavbarProps = {
+  colors?: string;
+};
+
+function Navbar({ colors = "bg-white"} : NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -13,14 +17,14 @@ function Navbar() {
   }, []);
 
   return (
-    <nav className="navbar flex justify-around items-center p-4">
+    <nav className={`navbar flex justify-around items-center p-4 ${colors}`}>
       <a href="/">
         <img src="/logo_expertise.png" alt="Logo" className="w-[200px]" />
       </a>
       <div className="flex justify-center">
         <ul
           className={`flex space-x-4 gap-8 text-gray-800 text-l transition-transform duration-1000  ${
-            scrolled ? "translate-y-5 fixed top-0.5 bg-gray-100 p-5 rounded-2xl" : "translate-y-0"
+            scrolled ? "translate-y-5 fixed top-0.5 bg-gray-100 p-5 rounded-2xl z-10" : "translate-y-0"
           }`}
         >
           <li>
@@ -38,7 +42,7 @@ function Navbar() {
         </ul>
       </div>
       <button className="bg-blue-500 text-white">
-        <a href="/login" className="btn">
+        <a href="/pricing" className="btn">
           Obtenir un devis
         </a>
       </button>
