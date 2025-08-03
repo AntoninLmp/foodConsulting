@@ -5,10 +5,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["src/*"]  // Shorthand for src directory
     },
-    "@utils/*": ["./src/utils/*"],
-    "@components/*": ["./src/components/*"],
-    "@pages/*": ["./src/pages/*"],
   }
 }
