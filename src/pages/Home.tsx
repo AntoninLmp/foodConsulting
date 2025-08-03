@@ -80,37 +80,37 @@ function Home() {
             icon={ClockArrowUp}
             title="Gestion"
             description="Sites modernes, rapides et adaptés à tous les écrans."
-            onClick={() => {}}
+            urlRedirect="/gestion"
           />
           <ServiceCard
             icon={Speech}
             title="Ressources Humaines"
             description="Interfaces intuitives pour une meilleure expérience utilisateur."
-            onClick={() => {}}
+            urlRedirect="/RessourcesHumaines"
           />
           <ServiceCard
             icon={Bubbles}
             title="Hygiène et Sécurité"
             description="Interfaces intuitives pour une meilleure expérience utilisateur."
-            onClick={() => {}}
-          />{" "}
+            urlRedirect="/#services"
+          />
           <ServiceCard
             icon={ChartArea}
             title="Controle de Gestion"
             description="Interfaces intuitives pour une meilleure expérience utilisateur."
-            onClick={() => {}}
-          />{" "}
+            urlRedirect="/#services"
+          />
           <ServiceCard
             icon={CalendarSync}
             title="Transformation des offres ou des locaux"
             description="Interfaces intuitives pour une meilleure expérience utilisateur."
-            onClick={() => {}}
+            urlRedirect="/transformation"
           />
           <ServiceCard
             icon={Handshake}
             title="Appel d'Offres"
             description="Interfaces intuitives pour une meilleure expérience utilisateur."
-            onClick={() => {}}
+            urlRedirect="/appelOffres"
           />
         </div>
       </section>

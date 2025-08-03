@@ -6,10 +6,11 @@ type ServiceCardProps = {
   icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   title: string;
   description: string;
+  urlRedirect?: string;
   onClick?: () => void;
 };
 
-export default function ServiceCard({ icon: Icon = Briefcase, title, description, onClick }: ServiceCardProps) {
+export default function ServiceCard({ icon: Icon = Briefcase, title, description, urlRedirect, onClick }: ServiceCardProps) {
   return (
     <Card className="max-w-sm rounded-2xl shadow-md p-6 transition hover:shadow-lg hover:-translate-y-1 m-auto">
       <CardContent className="flex flex-col items-center text-center gap-4">
@@ -18,7 +19,7 @@ export default function ServiceCard({ icon: Icon = Briefcase, title, description
         </div>
         <h3 className="text-xl font-semibold">{title}</h3>
         <p className="text-sm text-gray-600">{description}</p>
-        {onClick && <Button onClick={onClick}>En savoir plus</Button>}
+         <Button><a href={urlRedirect}>En savoir plus</a></Button>
       </CardContent>
     </Card>
   );
