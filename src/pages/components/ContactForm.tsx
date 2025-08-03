@@ -15,8 +15,8 @@ const ContactForm = () => {
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value, type, checked } = e.target;
-    setFormData({ ...formData, [name]: type === "checkbox" ? checked : value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -140,20 +140,6 @@ const ContactForm = () => {
           className="mt-1 block w-full rounded-xl border border-gray-300 shadow-sm p-3 focus:outline-none focus:ring focus:ring-red-200"
         ></textarea>
       </div>
-
-      {/* <div className="flex items-start space-x-2">
-        <input
-          type="checkbox"
-          name="consent"
-          checked={formData.consent}
-          onChange={handleChange}
-          required
-          className="mt-1"
-        />
-        <label className="text-sm text-gray-600">
-          J'accepte que mes données soient utilisées pour être contacté concernant cette demande.
-        </label>
-      </div> */}
 
       <div className="pt-4">
         <Button type="submit" className="w-full bg-gray-800 hover:bg-gray-700 text-white rounded-xl py-3 text-lg">

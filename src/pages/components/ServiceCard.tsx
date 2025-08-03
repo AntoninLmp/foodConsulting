@@ -7,10 +7,9 @@ type ServiceCardProps = {
   title: string;
   description: string;
   urlRedirect?: string;
-  onClick?: () => void;
 };
 
-export default function ServiceCard({ icon: Icon = Briefcase, title, description, urlRedirect, onClick }: ServiceCardProps) {
+export default function ServiceCard({ icon: Icon = Briefcase, title, description, urlRedirect }: ServiceCardProps) {
   return (
     <Card className="max-w-sm rounded-2xl shadow-md p-6 transition hover:shadow-lg hover:-translate-y-1 m-auto">
       <CardContent className="flex flex-col items-center text-center gap-4">
