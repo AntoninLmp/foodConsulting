@@ -86,19 +86,19 @@ function Home() {
             icon={Speech}
             title="Ressources Humaines"
             description="Interfaces intuitives pour une meilleure expérience utilisateur."
-            urlRedirect="/RessourcesHumaines"
+            urlRedirect="/ressources-humaines"
           />
           <ServiceCard
             icon={Bubbles}
             title="Hygiène et Sécurité"
             description="Interfaces intuitives pour une meilleure expérience utilisateur."
-            urlRedirect="/#services"
+            urlRedirect="/hygiene-et-securite"
           />
           <ServiceCard
             icon={ChartArea}
             title="Controle de Gestion"
             description="Interfaces intuitives pour une meilleure expérience utilisateur."
-            urlRedirect="/#services"
+            urlRedirect="/controle-de-gestion"
           />
           <ServiceCard
             icon={CalendarSync}
@@ -110,7 +110,7 @@ function Home() {
             icon={Handshake}
             title="Appel d'Offres"
             description="Interfaces intuitives pour une meilleure expérience utilisateur."
-            urlRedirect="/appelOffres"
+            urlRedirect="/appel-offres"
           />
         </div>
       </section>
