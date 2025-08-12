@@ -19,10 +19,44 @@ const ContactForm = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Envoie d'email
+  // const [loading, setLoading] = useState(false);
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form data submitted:", formData);
-    // Remplacer par une requête vers votre backend ou une API d’email
+    // setLoading(true);
+
+    try {
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          to: formData.email,
+          subject: `Demande de ${formData.fullName}`,
+          text: `Nom: ${formData.fullName}\nEmail: ${formData.email}\nMessage: ${formData.message}`
+        })
+      });
+
+      if (!res.ok) {
+        throw new Error("Erreur lors de l'envoi");
+      }
+
+      alert("Email envoyé avec succès !");
+      setFormData({
+        fullName: "",
+        email: "",
+        phone: "",
+        company: "",
+        subject: "",
+        service: "",
+        formule: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error(error);
+      alert("Impossible d'envoyer l'email.");
+    } finally {
+      // setLoading(false);
+    }
   };
 
   return (
