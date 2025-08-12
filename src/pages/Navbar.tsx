@@ -4,7 +4,7 @@ type NavbarProps = {
   colors?: string;
 };
 
-function Navbar({ colors = "bg-white"} : NavbarProps) {
+function Navbar({ colors = "bg-white" }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -28,16 +28,59 @@ function Navbar({ colors = "bg-white"} : NavbarProps) {
           }`}
         >
           <li>
-            <a href="/" className="text-xl">Accueil</a>
+            <a href="/" className="text-xl">
+              Accueil
+            </a>
+          </li>
+          <li className="relative group">
+            <a href="/#services" className="text-xl">
+              Services
+            </a>
+
+            {/* Menu déroulant visible au hover du parent OU du menu */}
+            <ul className="absolute left-[-55px] mt-4 w-64 bg-white shadow-lg rounded-lg opacity-0 group-hover:opacity-100 group-hover:translate-y-1 transform transition-all duration-200 pointer-events-none group-hover:pointer-events-auto z-20">
+              <li className="py-2 hover:bg-gray-100 rounded-lg">
+                <a href="/gestion" className="px-4">
+                  Gestion
+                </a>
+              </li>
+              <li className="py-2 hover:bg-gray-100 rounded-lg">
+                <a href="/ressources-humaines" className="px-4">
+                  Ressources Humaines
+                </a>
+              </li>
+              <li className="py-2 hover:bg-gray-100 rounded-lg">
+                <a href="/hygiene-securite" className="px-4">
+                  Hygiène et Sécurité
+                </a>
+              </li>
+              <li className="py-2 hover:bg-gray-100 rounded-lg">
+                <a href="/controle-gestion" className="px-4">
+                  Contrôle de Gestion
+                </a>
+              </li>
+              <li className="py-2 hover:bg-gray-100 rounded-lg">
+                <a href="/transformation" className="px-4">
+                  Transformation
+                </a>
+              </li>
+              <li className="py-2 hover:bg-gray-100 rounded-lg">
+                <a href="/appel-offres" className="px-4">
+                  Appel d'Offres
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="/" className="text-xl">
+              Contact
+            </a>
           </li>
           <li>
-            <a href="/#services" className="text-xl">Services</a>
-          </li>
-          <li>
-            <a href="/" className="text-xl">Contact</a>
-          </li>
-          <li>
-            <a href="/about" className="text-xl">A propos</a>
+            <a href="/about" className="text-xl">
+              A propos
+            </a>
           </li>
         </ul>
       </div>
