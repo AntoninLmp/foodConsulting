@@ -9,6 +9,7 @@ import TransformationLocaux from './pages/Services/TransformationLocaux';
 import AppelOffres from './pages/Services/AppelOffres';
 import HygieneEtSecurite from './pages/Services/SecurityHygiene';
 import ControleGestion from './pages/Services/ControleGestion';
+import Contact from './pages/Contact';
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/About" element={<About />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/gestion" element={<Gestion />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/ressources-humaines" element={<HumainRessources />} />
         <Route path="/hygiene-et-securite" element={<HygieneEtSecurite />} />
         <Route path="/controle-de-gestion" element={<ControleGestion />} />

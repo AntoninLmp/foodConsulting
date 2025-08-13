@@ -38,7 +38,7 @@ function Navbar({ colors = "bg-white" }: NavbarProps) {
             </a>
 
             {/* Menu déroulant visible au hover du parent OU du menu */}
-            <ul className="absolute left-[-55px] mt-4 w-64 bg-white shadow-lg rounded-lg opacity-0 group-hover:opacity-100 group-hover:translate-y-1 transform transition-all duration-200 pointer-events-none group-hover:pointer-events-auto z-20">
+            {/* <ul className="absolute left-[-55px] mt-4 w-64 bg-white shadow-lg rounded-lg opacity-0 group-hover:opacity-100 group-hover:translate-y-1 transform transition-all duration-200 pointer-events-none group-hover:pointer-events-auto z-20">
               <li className="py-2 hover:bg-gray-100 rounded-lg">
                 <a href="/gestion" className="px-4">
                   Gestion
@@ -69,11 +69,11 @@ function Navbar({ colors = "bg-white" }: NavbarProps) {
                   Appel d'Offres
                 </a>
               </li>
-            </ul>
+            </ul> */}
           </li>
 
           <li>
-            <a href="/" className="text-xl">
+            <a href="/contact" className="text-xl">
               Contact
             </a>
           </li>
