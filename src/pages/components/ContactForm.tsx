@@ -31,7 +31,7 @@ const ContactForm = () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        to: process.env.NEXT_PUBLIC_EMAIL_TO, // Optionnel : si tu veux que le destinataire soit dynamique
+        to: formData.email,
         subject: `Demande de ${formData.fullName} - ${formData.subject}`,
         text: `
           Nom: ${formData.fullName}
