@@ -3,6 +3,7 @@ import { Button } from "../../components/ui/button";
 
 
 const ContactForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -20,44 +21,54 @@ const ContactForm = () => {
   };
 
   // Envoie d'email
-  // const [loading, setLoading] = useState(false);
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    // setLoading(true);
+  e.preventDefault();
 
-    try {
-      const res = await fetch("/api/send-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          to: formData.email,
-          subject: `Demande de ${formData.fullName}`,
-          text: `Nom: ${formData.fullName}\nEmail: ${formData.email}\nMessage: ${formData.message}`
-        })
-      });
+  setIsLoading(true); // Ajoute un état de chargement
 
-      if (!res.ok) {
-        throw new Error("Erreur lors de l'envoi");
-      }
+  try {
+    const res = await fetch("/api/send-email", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        to: process.env.NEXT_PUBLIC_EMAIL_TO, // Optionnel : si tu veux que le destinataire soit dynamique
+        subject: `Demande de ${formData.fullName} - ${formData.subject}`,
+        text: `
+          Nom: ${formData.fullName}
+          Email: ${formData.email}
+          Téléphone: ${formData.phone}
+          Entreprise: ${formData.company}
+          Service: ${formData.service}
+          Formule: ${formData.formule}
+          Message: ${formData.message}
+        `
+      })
+    });
 
-      alert("Email envoyé avec succès !");
-      setFormData({
-        fullName: "",
-        email: "",
-        phone: "",
-        company: "",
-        subject: "",
-        service: "",
-        formule: "",
-        message: "",
-      });
-    } catch (error) {
-      console.error(error);
-      alert("Impossible d'envoyer l'email.");
-    } finally {
-      // setLoading(false);
+    if (!res.ok) {
+      const errorData = await res.json();
+      throw new Error(errorData.error || "Erreur lors de l'envoi");
     }
-  };
+
+    alert("Email envoyé avec succès !");
+    setFormData({
+      fullName: "",
+      email: "",
+      phone: "",
+      company: "",
+      subject: "",
+      service: "",
+      formule: "",
+      message: "",
+    });
+  } catch (error) {
+    console.error(error);
+    alert("Impossible d'envoyer l'email. Veuillez réessayer plus tard.");
+  } finally {
+    setIsLoading(false);
+  }
+};
+
 
   return (
     <form onSubmit={handleSubmit} className="max-w-5xl mx-auto border rounded-2xl p-8 space-y-6 mb-10">
@@ -180,6 +191,7 @@ const ContactForm = () => {
           Envoyer la demande
         </Button>
       </div>
+      {isLoading ? "Envoi en cours..." : "Envoyer"}
     </form>
   );
 };
