@@ -42,7 +42,7 @@ function Pricing() {
             />
           </div>
         </section>
-        <section>
+        {/* <section>
           <h2 className="text-center text-3xl font-semibold mb-8 italic">Ils m'ont fait confiance alors pourquoi pas vous ?</h2>
           <div className="flex flex-wrap justify-center gap-6 m-20 mx-[20%]">
             <img src="https://www.cse-guide.fr/medias/2019/05/Sodexo.png" alt="Logo Expertise" className="w-[200px] h-auto" />
@@ -50,7 +50,7 @@ function Pricing() {
             <img src="http://www.dupont-restauration.fr/wp-content/uploads/2017/01/logo-dupont-2017.png" alt="Logo Expertise" className="w-[250px] h-auto" />
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStlmrpa7epKnr7d-rWnWzUDixlC_Y0ufJ6_g&s" alt="Logo Expertise" className="w-[100px] h-1/2" />
           </div>
-        </section>
+        </section> */}
         <section>
           <ContactForm />
         </section>
