@@ -1,17 +1,22 @@
 import React, { useState } from "react";
 import { Button } from "../../components/ui/button";
 
+interface ContactFormProps {
+  formule: string;
+  subject: string;
+  setFormule: (value: string) => void;
+}
 
-const ContactForm = () => {
+const ContactForm: React.FC<ContactFormProps> = ({ formule, subject, setFormule }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     phone: "",
     company: "",
-    subject: "",
+    subject: subject,
     service: "",
-    formule: "",
+    formule: formule,
     message: "",
   });
 
@@ -71,7 +76,7 @@ const ContactForm = () => {
 
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-5xl mx-auto border rounded-2xl p-8 space-y-6 mb-10">
+    <form onSubmit={handleSubmit} className="max-w-5xl mx-auto border rounded-2xl p-8 space-y-6 mb-10" id="contact-form">
       <h1 className="pb-4">Obtenir un devis personnalisé</h1>
             <p className="pb-3">Pour obtenir un devis personnalisé, veuillez me contacter via le formulaire ci-dessous.</p>
 
@@ -130,7 +135,7 @@ const ContactForm = () => {
           type="text"
           name="subject"
           required
-          value={formData.subject}
+          value={subject}
           onChange={handleChange}
           className="mt-1 block w-full rounded-xl border border-gray-300 shadow-sm p-3 focus:outline-none focus:ring focus:ring-red-200"
         />
@@ -160,9 +165,10 @@ const ContactForm = () => {
         <label className="block text-sm font-medium text-gray-700">Formule souhaitée *</label>
         <select
           name="formule"
+          id="formule"
           required
-          value={formData.formule}
-          onChange={handleChange}
+          value={formule}
+          onChange={e => setFormule(e.target.value)}
           className="mt-1 block w-full rounded-xl border border-gray-300 shadow-sm p-3 focus:outline-none focus:ring focus:ring-red-200"
         >
           <option value="">-- Sélectionnez une formule --</option>
