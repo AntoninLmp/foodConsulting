@@ -31,8 +31,16 @@ const ContactForm: React.FC<ContactFormProps> = ({ formule, subject, setFormule,
     e.preventDefault();
 
     const htmlTemplate = `
-      <div>
-        <h2 style="color:#c0392b;">Nouvelle demande de contact</h2>
+      <div style="font-family: Arial, sans-serif; line-height:1.6; color:#333; max-width:650px; margin:auto; border:1px solid #e0e0e0; border-radius:8px; overflow:hidden;">
+  
+      <div style="background:#1e2939; color:white; padding:20px; text-align:center;">
+        <h2 style="margin:0; font-size:22px;">Nouvelle demande de contact</h2>
+      </div>
+
+      <div style="padding:20px; background:#fafafa;">
+        <p>Bonjour,</p>
+        <p>Vous avez reçu une nouvelle demande de contact depuis le site web.<br><br> Voici les détails :</p>
+
         <table style="border-collapse: collapse; width:100%; max-width:600px;">
           <tr>
             <td style="padding:8px; border:1px solid #ddd;"><strong>👤 Nom</strong></td>
@@ -65,7 +73,14 @@ const ContactForm: React.FC<ContactFormProps> = ({ formule, subject, setFormule,
             </td>
           </tr>
         </table>
+
+        <p style="margin-top:20px;">Vous pouvez répondre directement à <a href="mailto:${formData.email}" style="color:#c0392b;">${formData.email}</a>.</p>
       </div>
+
+      <div style="background:#f0f0f0; padding:15px; text-align:center; font-size:12px; color:#777;">
+        <p style="margin:0;">Cet email a été généré automatiquement depuis le site <strong>VotreEntreprise.com</strong>.</p>
+      </div>
+    </div>
     `;
 
     try {
@@ -74,7 +89,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ formule, subject, setFormule,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           to: formData.email,
-          subject: `Demande de ${formData.fullName} - ${subject}`,
+          subject: `Demande de contact - ${formData.fullName}`,
           html: htmlTemplate,
         }),
       });
@@ -216,7 +231,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ formule, subject, setFormule,
           required
           value={formData.message}
           onChange={handleChange}
-          placeholder="Décrivez votre demande ou vos besoins..."
+          placeholder="Décrivez votre demande ou vos besoins... N'hésitez pas à être précis."
           className="mt-1 block w-full rounded-xl border border-gray-300 shadow-sm p-3 focus:outline-none focus:ring focus:ring-red-200"
         ></textarea>
       </div>
@@ -238,7 +253,8 @@ const ContactForm: React.FC<ContactFormProps> = ({ formule, subject, setFormule,
             <AlertCircleIcon />
             <AlertTitle>Une erreur s'est produite.</AlertTitle>
             <AlertDescription>
-              <p>Vérifiez vos informations et réessayez. Certains champs sont manquants ou invalides.</p>
+              <p>Vérifiez vos informations et réessayez. </p>
+              <p>Certains champs sont peut-être manquants ou invalides.</p>
             </AlertDescription>
           </Alert>
         ) : null}

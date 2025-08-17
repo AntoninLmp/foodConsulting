@@ -26,7 +26,7 @@ function Home() {
           </button>
           <button>
             <a
-              href="/pricing"
+              href="/pricing/#contact-form"
               className="ml-4 bg-gray-200 text-gray-800 px-6 py-3 rounded-full hover:bg-gray-300 transition-colors text-xl"
             >
               Me contacter
