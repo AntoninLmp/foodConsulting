@@ -62,7 +62,7 @@ function Pricing() {
         </section>
         {/* ...existing code... */}
         <section>
-          <ContactForm formule={formule} subject={subject} />
+          <ContactForm formule={formule} subject={subject} setSubject={setSubject} setFormule={setFormule} />
         </section>
       </div>
       <Footer />

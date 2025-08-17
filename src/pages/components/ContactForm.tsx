@@ -6,18 +6,18 @@ import { AlertCircleIcon, CheckCircle2Icon } from "lucide-react";
 interface ContactFormProps {
   formule: string;
   subject: string;
+  setFormule?: (formule: string) => void; // Optional setter for formule
+  setSubject?: (subject: string) => void; // Optional setter for subject
 }
 
-const ContactForm: React.FC<ContactFormProps> = ({ formule, subject }) => {
+const ContactForm: React.FC<ContactFormProps> = ({ formule, subject, setFormule, setSubject }) => {
   const [isLoading, setIsLoading] = useState("");
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     phone: "",
     company: "",
-    subject: subject,
     service: "",
-    formule: formule,
     message: "",
   });
 
@@ -56,7 +56,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ formule, subject }) => {
           </tr>
           <tr>
             <td style="padding:8px; border:1px solid #ddd;"><strong>📝 Formule</strong></td>
-            <td style="padding:8px; border:1px solid #ddd;">${formData.formule || "Non renseignée"}</td>
+            <td style="padding:8px; border:1px solid #ddd;">${formule || "Non renseignée"}</td>
           </tr>
           <tr>
             <td style="padding:8px; border:1px solid #ddd; vertical-align:top;"><strong>💬 Message</strong></td>
@@ -74,17 +74,8 @@ const ContactForm: React.FC<ContactFormProps> = ({ formule, subject }) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           to: formData.email,
-          subject: `Demande de ${formData.fullName} - ${formData.subject}`,
+          subject: `Demande de ${formData.fullName} - ${subject}`,
           html: htmlTemplate,
-        //   text: `
-        //   Nom: ${formData.fullName}
-        //   Email: ${formData.email}
-        //   Téléphone: ${formData.phone}
-        //   Entreprise: ${formData.company}
-        //   Service: ${formData.service}
-        //   Formule: ${formData.formule}
-        //   Message: ${formData.message}
-        // `,
         }),
       });
 
@@ -100,9 +91,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ formule, subject }) => {
         email: "",
         phone: "",
         company: "",
-        subject: "",
         service: "",
-        formule: "",
         message: "",
       });
     } catch (error) {
@@ -177,7 +166,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ formule, subject }) => {
           name="subject"
           required
           value={subject}
-          onChange={handleChange}
+          onChange={(e) => setSubject?.(e.target.value)}
           className="mt-1 block w-full rounded-xl border border-gray-300 shadow-sm p-3 focus:outline-none focus:ring focus:ring-red-200"
         />
       </div>
@@ -206,19 +195,18 @@ const ContactForm: React.FC<ContactFormProps> = ({ formule, subject }) => {
         <label className="block text-sm font-medium text-gray-700">Formule souhaitée *</label>
         <select
           name="formule"
-          id="formule"
           required
-          value={formData.formule}
-          onChange={handleChange}
+          value={formule}
+          onChange={(e) => setFormule?.(e.target.value)}
           className="mt-1 block w-full rounded-xl border border-gray-300 shadow-sm p-3 focus:outline-none focus:ring focus:ring-red-200"
         >
           <option value="">-- Sélectionnez une formule --</option>
-          <option value="heure">Forfait à l'heure</option>
-          <option value="journalier">Forfait journalier</option>
-          <option value="mensuel">Forfait mensuel</option>
+          <option value="heure">Forfait à l'heure (100€ HT)</option>
+          <option value="journalier">Forfait journalier (600€ HT)</option>
+          <option value="mensuel">Forfait mensuel (2000€ HT)</option>
           <option value="autre">Autre</option>
         </select>
-      </div>
+      </div> 
 
       <div>
         <label className="block text-sm font-medium text-gray-700">Détails *</label>
