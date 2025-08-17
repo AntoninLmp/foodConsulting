@@ -1,5 +1,5 @@
 
-import React, { use, useState } from "react";
+import { useState } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import PriceCard from "./components/PriceCard";
@@ -62,7 +62,7 @@ function Pricing() {
         </section>
         {/* ...existing code... */}
         <section>
-          <ContactForm formule={formule} subject={subject} setFormule={setFormule} />
+          <ContactForm formule={formule} subject={subject} />
         </section>
       </div>
       <Footer />

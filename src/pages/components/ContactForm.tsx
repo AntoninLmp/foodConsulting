@@ -6,10 +6,9 @@ import { AlertCircleIcon, CheckCircle2Icon } from "lucide-react";
 interface ContactFormProps {
   formule: string;
   subject: string;
-  setFormule: (value: string) => void;
 }
 
-const ContactForm: React.FC<ContactFormProps> = ({ formule, subject, setFormule }) => {
+const ContactForm: React.FC<ContactFormProps> = ({ formule, subject }) => {
   const [isLoading, setIsLoading] = useState("");
   const [formData, setFormData] = useState({
     fullName: "",
