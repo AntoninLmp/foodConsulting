@@ -31,7 +31,7 @@ function Pricing() {
               price={"100 €"}
               priceDescription="/ heure"
               onClick={() => {
-                setFormule("à_l_heure");
+                setFormule("heure");
                 setSubject("Demande de devis pour la formule à l'heure");
                 document.getElementById("contact-form")?.scrollIntoView({ behavior: "smooth" });
               }}

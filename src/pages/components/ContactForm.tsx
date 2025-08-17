@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "../../components/ui/button";
+import { Alert, AlertDescription, AlertTitle } from "../../components/ui/alert";
+import { AlertCircleIcon, CheckCircle2Icon } from "lucide-react";
 
 interface ContactFormProps {
   formule: string;
@@ -8,7 +10,7 @@ interface ContactFormProps {
 }
 
 const ContactForm: React.FC<ContactFormProps> = ({ formule, subject, setFormule }) => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState("");
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -27,58 +29,98 @@ const ContactForm: React.FC<ContactFormProps> = ({ formule, subject, setFormule 
 
   // Envoie d'email
   const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  setIsLoading(true); // Ajoute un état de chargement
+    const htmlTemplate = `
+      <div>
+        <h2 style="color:#c0392b;">Nouvelle demande de contact</h2>
+        <table style="border-collapse: collapse; width:100%; max-width:600px;">
+          <tr>
+            <td style="padding:8px; border:1px solid #ddd;"><strong>👤 Nom</strong></td>
+            <td style="padding:8px; border:1px solid #ddd;">${formData.fullName}</td>
+          </tr>
+          <tr>
+            <td style="padding:8px; border:1px solid #ddd;"><strong>📧 Email</strong></td>
+            <td style="padding:8px; border:1px solid #ddd;">${formData.email}</td>
+          </tr>
+          <tr>
+            <td style="padding:8px; border:1px solid #ddd;"><strong>📱 Téléphone</strong></td>
+            <td style="padding:8px; border:1px solid #ddd;">${formData.phone || "Non renseigné"}</td>
+          </tr>
+          <tr>
+            <td style="padding:8px; border:1px solid #ddd;"><strong>🏢 Entreprise</strong></td>
+            <td style="padding:8px; border:1px solid #ddd;">${formData.company || "Non renseignée"}</td>
+          </tr>
+          <tr>
+            <td style="padding:8px; border:1px solid #ddd;"><strong>🛠 Service</strong></td>
+            <td style="padding:8px; border:1px solid #ddd;">${formData.service || "Non renseigné"}</td>
+          </tr>
+          <tr>
+            <td style="padding:8px; border:1px solid #ddd;"><strong>📝 Formule</strong></td>
+            <td style="padding:8px; border:1px solid #ddd;">${formData.formule || "Non renseignée"}</td>
+          </tr>
+          <tr>
+            <td style="padding:8px; border:1px solid #ddd; vertical-align:top;"><strong>💬 Message</strong></td>
+            <td style="padding:8px; border:1px solid #ddd; white-space:pre-line;">
+              ${formData.message}
+            </td>
+          </tr>
+        </table>
+      </div>
+    `;
 
-  try {
-    const res = await fetch("/api/send-email", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        to: formData.email,
-        subject: `Demande de ${formData.fullName} - ${formData.subject}`,
-        text: `
-          Nom: ${formData.fullName}
-          Email: ${formData.email}
-          Téléphone: ${formData.phone}
-          Entreprise: ${formData.company}
-          Service: ${formData.service}
-          Formule: ${formData.formule}
-          Message: ${formData.message}
-        `
-      })
-    });
+    try {
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          to: formData.email,
+          subject: `Demande de ${formData.fullName} - ${formData.subject}`,
+          html: htmlTemplate,
+        //   text: `
+        //   Nom: ${formData.fullName}
+        //   Email: ${formData.email}
+        //   Téléphone: ${formData.phone}
+        //   Entreprise: ${formData.company}
+        //   Service: ${formData.service}
+        //   Formule: ${formData.formule}
+        //   Message: ${formData.message}
+        // `,
+        }),
+      });
 
-    if (!res.ok) {
-      const errorData = await res.json();
-      throw new Error(errorData.error || "Erreur lors de l'envoi");
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.error || "Erreur lors de l'envoi");
+        setIsLoading("error");
+      }
+
+      setIsLoading("success");
+      setFormData({
+        fullName: "",
+        email: "",
+        phone: "",
+        company: "",
+        subject: "",
+        service: "",
+        formule: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error(error);
+      alert("Impossible d'envoyer l'email. Veuillez réessayer plus tard.");
+      setIsLoading("error");
     }
-
-    alert("Email envoyé avec succès !");
-    setFormData({
-      fullName: "",
-      email: "",
-      phone: "",
-      company: "",
-      subject: "",
-      service: "",
-      formule: "",
-      message: "",
-    });
-  } catch (error) {
-    console.error(error);
-    alert("Impossible d'envoyer l'email. Veuillez réessayer plus tard.");
-  } finally {
-    setIsLoading(false);
-  }
-};
-
+  };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-5xl mx-auto border rounded-2xl p-8 space-y-6 mb-10" id="contact-form">
+    <form
+      onSubmit={handleSubmit}
+      className="max-w-5xl mx-auto border rounded-2xl p-8 space-y-6 mb-10"
+      id="contact-form"
+    >
       <h1 className="pb-4">Obtenir un devis personnalisé</h1>
-            <p className="pb-3">Pour obtenir un devis personnalisé, veuillez me contacter via le formulaire ci-dessous.</p>
+      <p className="pb-3">Pour obtenir un devis personnalisé, veuillez me contacter via le formulaire ci-dessous.</p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
@@ -160,21 +202,21 @@ const ContactForm: React.FC<ContactFormProps> = ({ formule, subject, setFormule 
           <option value="ne_sais_pas">Je ne sais pas encore</option>
         </select>
       </div>
-      
+
       <div>
         <label className="block text-sm font-medium text-gray-700">Formule souhaitée *</label>
         <select
           name="formule"
           id="formule"
           required
-          value={formule}
-          onChange={e => setFormule(e.target.value)}
+          value={formData.formule}
+          onChange={handleChange}
           className="mt-1 block w-full rounded-xl border border-gray-300 shadow-sm p-3 focus:outline-none focus:ring focus:ring-red-200"
         >
           <option value="">-- Sélectionnez une formule --</option>
-          <option value="à_l_heure">À l'heure</option>
-          <option value="journalier">Journalier</option>
-          <option value="mensuel">Mensuel</option>
+          <option value="heure">Forfait à l'heure</option>
+          <option value="journalier">Forfait journalier</option>
+          <option value="mensuel">Forfait mensuel</option>
           <option value="autre">Autre</option>
         </select>
       </div>
@@ -197,7 +239,23 @@ const ContactForm: React.FC<ContactFormProps> = ({ formule, subject, setFormule 
           Envoyer la demande
         </Button>
       </div>
-      {isLoading ? "Envoi en cours..." : "Envoyer"}
+      <div className="gap-4 mx-[20%]">
+        {isLoading === "success" ? (
+          <Alert variant="success">
+            <CheckCircle2Icon />
+            <AlertTitle>Email envoyé avec succès !</AlertTitle>
+            <AlertDescription>Vous allez recevoir un email de confirmation sous peu.</AlertDescription>
+          </Alert>
+        ) : isLoading === "error" ? (
+          <Alert variant="destructive">
+            <AlertCircleIcon />
+            <AlertTitle>Une erreur s'est produite.</AlertTitle>
+            <AlertDescription>
+              <p>Vérifiez vos informations et réessayez. Certains champs sont manquants ou invalides.</p>
+            </AlertDescription>
+          </Alert>
+        ) : null}
+      </div>
     </form>
   );
 };

@@ -5,7 +5,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Méthode non autorisée" });
   }
 
-  const { to, subject, text } = req.body;
+  const { to, subject, html } = req.body;
 
   try {
     // Configurer Nodemailer avec Gmail (ou autre SMTP)
@@ -18,10 +18,10 @@ export default async function handler(req, res) {
     });
 
     await transporter.sendMail({
-      from: to,
+      from: "consulting.food.expertise@gmail.com",
       to: process.env.EMAIL_USER,
       subject: subject,
-      text: text
+      html: html
     });
 
     res.status(200).json({ success: true });
