@@ -46,3 +46,24 @@
 a {
   text-decoration: none;
 }
+
+.menu-services {
+  position: fixed;
+  z-index: 10;
+  background: #f3f4f6;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  border: 1px gray solid;
+  border-radius: 5px;
+}
+
+.menu-services a {
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+.menu-services a:hover {
+  background-color: #e5e7eb;
+  border-radius: 5px;
+}

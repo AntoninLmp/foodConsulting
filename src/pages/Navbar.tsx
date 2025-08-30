@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ChevronDown } from "lucide-react";
 
 type NavbarProps = {
   colors?: string;
@@ -15,6 +16,19 @@ function Navbar({ colors = "bg-white" }: NavbarProps) {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleClickServices = () => {
+    const menu = document.querySelector(".menu-services") as HTMLElement | null;
+    if (menu) {
+      menu.style.display = menu.style.display === "" ? "none" : "";
+
+      if (!scrolled) {
+        menu.style.top = "";
+      } else {
+        menu.style.top = "61px";
+      }
+    }
+  };
 
   return (
     <nav className={`navbar flex justify-around items-center p-4 ${colors}`}>
@@ -33,10 +47,30 @@ function Navbar({ colors = "bg-white" }: NavbarProps) {
             </a>
           </li>
           <li className="relative group">
-            <a href="/#services" className="text-xl">
+            <a id="navbarServices" className="text-xl" onClick={handleClickServices}>
               Services
+              <ChevronDown className="inline-block ml-1" />
             </a>
-
+            <div className="menu-services" aria-labelledby="navbarDropdown" style={{ display: "none" }}>
+              <a href="/gestion" className="px-4">
+                Gestion
+              </a>
+              <a href="/ressources-humaines" className="px-4">
+                Ressources Humaines
+              </a>
+              <a href="/hygiene-et-securite" className="px-4">
+                Hygiène et Sécurité
+              </a>
+              <a href="/controle-de-gestion" className="px-4">
+                Contrôle de Gestion
+              </a>{" "}
+              <a href="/transformation" className="px-4">
+                Transformation
+              </a>
+              <a href="/appel-offres" className="px-4">
+                Appel d'Offres
+              </a>
+            </div>
             {/* Menu déroulant visible au hover du parent OU du menu */}
             {/* <ul className="absolute left-[-55px] mt-4 w-64 bg-white shadow-lg rounded-lg opacity-0 group-hover:opacity-100 group-hover:translate-y-1 transform transition-all duration-200 pointer-events-none group-hover:pointer-events-auto z-20">
               <li className="py-2 hover:bg-gray-100 rounded-lg">
@@ -45,38 +79,28 @@ function Navbar({ colors = "bg-white" }: NavbarProps) {
                 </a>
               </li>
               <li className="py-2 hover:bg-gray-100 rounded-lg">
-                <a href="/ressources-humaines" className="px-4">
-                  Ressources Humaines
-                </a>
+                
               </li>
               <li className="py-2 hover:bg-gray-100 rounded-lg">
-                <a href="/hygiene-securite" className="px-4">
-                  Hygiène et Sécurité
-                </a>
+                
               </li>
               <li className="py-2 hover:bg-gray-100 rounded-lg">
-                <a href="/controle-gestion" className="px-4">
-                  Contrôle de Gestion
-                </a>
+                
               </li>
               <li className="py-2 hover:bg-gray-100 rounded-lg">
-                <a href="/transformation" className="px-4">
-                  Transformation
-                </a>
+               
               </li>
               <li className="py-2 hover:bg-gray-100 rounded-lg">
-                <a href="/appel-offres" className="px-4">
-                  Appel d'Offres
-                </a>
+                
               </li>
             </ul> */}
           </li>
 
-          <li>
+          {/* <li>
             <a href="/contact" className="text-xl">
               Contact
             </a>
-          </li>
+          </li> */}
           <li>
             <a href="/about" className="text-xl">
               A propos
