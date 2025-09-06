@@ -79,8 +79,8 @@ function Navbar({ colors = "bg-white" }: NavbarProps) {
           </li>
         </ul>
       </div>
-      <button className="bg-blue-500 text-white">
-        <a href="/pricing" className="btn">
+      <button className=" text-white">
+        <a href="/pricing" className="bg-[#286c91] text-white px-6 py-3 rounded-full hover:bg-[#1f4f66] transition-colors text-xl">
           Obtenir un devis
         </a>
       </button>

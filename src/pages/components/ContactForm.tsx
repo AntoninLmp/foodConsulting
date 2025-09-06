@@ -122,7 +122,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ formule, subject, setFormule,
       className="max-w-5xl mx-auto border rounded-2xl p-8 space-y-6 mb-10"
       id="contact-form"
     >
-      <h1 className="pb-4">Obtenir un devis personnalisé</h1>
+      <h1 className="pb-4">Prise de contact / Devis personnalisé</h1>
       <p className="pb-3">Pour obtenir un devis personnalisé, veuillez me contacter via le formulaire ci-dessous.</p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

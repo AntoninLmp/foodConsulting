@@ -11,11 +11,11 @@ function Home() {
       {/* Section d'introduction */}
       <section className="text-gray-800 h-[70vh] flex items-center justify-around mx-[15%]">
         <div className="text-left">
-          <h1 className="text-5xl font-bold mb-4">
+          <p className="text-8xl font-bold mb-4">
             {/* "Une vision sans exécution n’est qu’une hallucination." — Thomas Edison */}
-            David Lampin.
-          </h1>
-          <h2 className="text-xl font-light mb-8">Consultant en restauration et gestion d'entreprise</h2>
+            David Lampin
+          </p>
+          <p className="text-2xl font-light mb-8">Consultant en restauration et gestion d'entreprise</p>
           <button>
             <a
               href="https://calendly.com/david-lampin/30min"
@@ -40,7 +40,7 @@ function Home() {
       <section className="text-white px-[15%] py-10 my-10 grid grid-cols-4 gap-4 bg-[#286C91]">
         <div className="col-span-2 flex flex-col justify-center">
           <h2 className="text-3xl font-semibold mb-4">
-            A propos de <span className="italic text-4xl ">FoodConsulting</span>{" "}
+            A propos de <span className="italic text-4xl ">Consulting Food</span>{" "}
           </h2>
           <h3 className="text-2xl">35 ans d'expertise au service de votre réussite.</h3>
           <p className="text-l mb-4 text-justify px-5 font-light">
