@@ -42,7 +42,11 @@ function ServiceDescription({ title, sousTitle, description, services }: Service
             ))}
           </div>
         </div>
+        <div className="text-center mt-10">
+          <a href="/pricing/#contact-form" className="inline-block bg-[#286C91] text-white px-8 py-3 rounded-xl text-lg font-semibold shadow hover:bg-[#1a365d] transition">Contactez-moi pour un accompagnement personnalisé</a>
+        </div>
       </div>
+      
       <Footer />
     </>
   );
