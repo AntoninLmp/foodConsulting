@@ -16,7 +16,7 @@ export default function PriceCard({ type, description, price, priceDescription, 
         <h3 className="text-2xl font-semibold">Forfait {type}</h3>
         <p className="text-sm">{description}</p>
         <div className="flex items-end my-9">
-            <p className="text-[2.7em] sm:text-[4em] font-bold">{price}</p>
+            <p className="text-[2em] sm:text-[4em] font-bold">{price}</p>
             <p className="text-xs text-gray-200 mb-4 pl-3">{priceDescription}</p>
         </div>
         {onClick && <Button onClick={onClick}>Je m'inscris</Button>}
