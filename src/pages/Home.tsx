@@ -1,4 +1,3 @@
-
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import { ClockArrowUp, Speech, Bubbles, ChartArea, Handshake, CalendarSync } from "lucide-react";
@@ -16,29 +15,31 @@ function Home() {
             David Lampin
           </p>
           <p className="text-2xl font-light mb-8">Consultant en restauration et gestion d'entreprise</p>
-          <button>
-            <a
-              href="https://calendly.com/david-lampin/30min"
-              className="bg-[#286c91] text-white px-6 py-3 rounded-full hover:bg-[#1f4f66] transition-colors text-xl"
-            >
-              Prendre rendez-vous
-            </a>
-          </button>
-          <button>
-            <a
-              href="/pricing/#contact-form"
-              className="ml-4 bg-gray-200 text-gray-800 px-6 py-3 rounded-full hover:bg-gray-300 transition-colors text-xl"
-            >
-              Me contacter
-            </a>
-          </button>
+          <div>
+            <button>
+              <a
+                href="https://calendly.com/david-lampin/30min"
+                className="bg-[#286c91] text-white px-6 py-3 rounded-full hover:bg-[#1f4f66] transition-colors text-xl"
+              >
+                Prendre rendez-vous
+              </a>
+            </button>
+            <button id="buttonContact" >
+              <a
+                href="/pricing/#contact-form"
+                className="bg-gray-200 text-gray-800 px-6 py-3 rounded-full hover:bg-gray-300 transition-colors text-xl"
+              >
+                Me contacter
+              </a>
+            </button>
+          </div>
         </div>
-        <img src="/Photo_profil.png" alt="photo de profil" className="w-1/2 max-w-[600px]"/>
+        <img src="/Photo_profil.png" alt="photo de profil" id="photoProfil" className="w-1/2 max-w-[600px]" />
       </section>
 
       {/* Section de présentation */}
-      <section className="text-white px-[15%] py-10 my-10 grid grid-cols-4 gap-4 bg-[#286C91]">
-        <div className="col-span-2 flex flex-col justify-center">
+      <section id="home-div-presentation" className="text-white px-[15%] py-10 my-10 grid grid-cols-4 gap-4 bg-[#286C91]">
+        <div className="col-span-4 md:col-span-2 flex flex-col justify-center">
           <h2 className="text-3xl font-semibold mb-4">
             A propos de <span className="italic text-4xl ">Consulting Food</span>{" "}
           </h2>
@@ -63,7 +64,7 @@ function Home() {
             transformer vos idées en résultats concrets et durables
           </p>
         </div>
-        <div className="col-span-2 flex items-center">
+        <div className="col-span-2 flex items-center" id="divImagePresentation">
           <img
             src="https://i.pinimg.com/736x/63/c1/f3/63c1f38307b961d147e211e7ebacfdd0.jpg"
             alt=""
@@ -75,7 +76,7 @@ function Home() {
       {/* Section Services */}
       <section id="services">
         <h2 className="text-3xl text-gray-800 font-semibold text-center mb-8 ">Mes domaines d'expertises</h2>
-        <div className="grid grid-cols-3 gap-4 px-[15%] mb-20">
+        <div className="grid md:grid-cols-3 gap-4 px-[15%] mb-20">
           <ServiceCard
             icon={ClockArrowUp}
             title="Gestion"

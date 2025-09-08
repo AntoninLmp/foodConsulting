@@ -47,6 +47,34 @@ a {
   text-decoration: none;
 }
 
+@media (max-width: 672px)  {
+  #navbarNav li a {
+    font-size: 0.9em;
+    text-wrap: nowrap;
+  }
+  #navbarButtonContact {
+    display: none;
+  }
+  #navbarLogo {
+    width: 125px;
+  }
+  #buttonContact {
+    margin-top: 15px;
+  }
+  #photoProfil {
+    display: none;
+  }
+  #divImagePresentation {
+    display: none;
+  }
+  /* Centrage du navbarNav en position fixed */
+  #navbarNav.fixed {
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+  }
+}
+
 .menu-services {
   position: fixed;
   z-index: 10;
