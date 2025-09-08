@@ -33,11 +33,12 @@ function Navbar({ colors = "bg-white" }: NavbarProps) {
   return (
     <nav className={`navbar flex justify-around items-center p-4 ${colors}`}>
       <a href="/">
-        <img src="/logo_expertise.png" alt="Logo" className="w-[200px]" />
+        <img src="/logo_expertise.png" alt="Logo" className="w-[200px]" id="navbarLogo" />
       </a>
-      <div className="flex justify-center">
+      <div className="flex flex-1 justify-center">
         <ul
-          className={`flex space-x-4 gap-8 text-gray-800 text-l transition-transform duration-1000  ${
+          id="navbarNav"
+          className={`flex items-center space-x-4 gap-8 text-gray-800 text-l mx-auto transition-transform duration-1000  ${
             scrolled ? "translate-y-5 fixed top-0.5 bg-gray-100 p-5 rounded-2xl z-10" : "translate-y-0"
           }`}
         >
@@ -47,7 +48,7 @@ function Navbar({ colors = "bg-white" }: NavbarProps) {
             </a>
           </li>
           <li className="relative group">
-            <a id="navbarServices" className="text-xl" onClick={handleClickServices}>
+            <a id="navbarServices" className="text-xl d-flex" onClick={handleClickServices}>
               Services
               <ChevronDown className="inline-block ml-1" />
             </a>
@@ -79,7 +80,7 @@ function Navbar({ colors = "bg-white" }: NavbarProps) {
           </li>
         </ul>
       </div>
-      <button className=" text-white">
+      <button className=" text-white" id="navbarButtonContact">
         <a href="/pricing" className="bg-[#286c91] text-white px-6 py-3 rounded-full hover:bg-[#1f4f66] transition-colors text-xl">
           Obtenir un devis
         </a>
