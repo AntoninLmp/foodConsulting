@@ -34,7 +34,7 @@ function Home() {
             </button>
           </div>
         </div>
-        <img src="/Photo_profil.png" alt="photo de profil" id="photoProfil" className="w-1/2 max-w-[600px]" />
+        <img src="/Photo_profil2.png" alt="photo de profil" id="photoProfil" className="w-1/2 max-w-[600px]" />
       </section>
 
       {/* Section de présentation */}
