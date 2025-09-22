@@ -3,7 +3,7 @@ const Footer = () => (
     <footer className="bg-neutral-800 text-white pt-8 pb-4 mt-10">
         <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="flex flex-col items-center md:items-start">
-                <img src="/logo_expertise.png" alt="Logo Food Consulting" className="w-32 mb-2" />
+                <img src="/small_logo_white.jpg" alt="Logo Food Consulting" className="w-32 mb-2 rounded-2xl" />
                 <p className="text-lg font-semibold">Food Consulting</p>
                 <p className="text-sm text-[#bcd0e6]">Expertise et accompagnement en restauration collective</p>
             </div>
